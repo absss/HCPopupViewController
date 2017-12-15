@@ -1,6 +1,6 @@
 # HCPopupViewController
 # HCPopupViewController
-
+有问题随时联系：微信：hehai_WeChat 邮箱：hehaichi123@163.com
 使用方法：
 //实例化，并弹出它
 HCBasePopupViewController * pc =  [[HCBasePopupViewController alloc]init];
