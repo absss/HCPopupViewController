@@ -25,3 +25,23 @@ label.textAlignment = NSTextAlignmentCenter;
 - (void)didTapMaskViewWithMaskView:(UIView *)maskView withController:(UIViewController *)controller{
 NSLog(@"点击遮罩");
 }
+
+
+//第二种仿微信的选择弹出框：
+
+ HCBottomPopupViewController * pc =  [[HCBottomPopupViewController alloc]init];
+        HCBottomPopupAction * action1 = [HCBottomPopupAction actionWithTitle:@"选择项1" withSelectedBlock:^{
+                NSLog(@"点击选项1");
+        } withType:HCBottomPopupActionSelectItemTypeDefault];
+        HCBottomPopupAction * action2 = [HCBottomPopupAction actionWithTitle:@"选择项2" withSelectedBlock:^{
+                NSLog(@"点击选项2");
+        } withType:HCBottomPopupActionSelectItemTypeDefault];
+        HCBottomPopupAction * action3 = [HCBottomPopupAction actionWithTitle:@"选择项3" withSelectedBlock:^{
+                NSLog(@"点击选项3");
+        } withType:HCBottomPopupActionSelectItemTypeDefault];
+         HCBottomPopupAction * action4 = [HCBottomPopupAction actionWithTitle:@"取消" withSelectedBlock:nil withType:HCBottomPopupActionSelectItemTypeCancel];
+        [pc addAction:action1];
+        [pc addAction:action2];
+        [pc addAction:action3];
+        [pc addAction:action4];
+
