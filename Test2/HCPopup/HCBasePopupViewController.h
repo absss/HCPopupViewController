@@ -17,9 +17,9 @@
 
  @param popupView 弹框view
  */
-- (void)setupSubViewWithPopupView:(UIView *)popupView withController:(UIViewController *)controller;
+- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView;
 
-- (void)didTapMaskViewWithMaskView:(UIView *)maskView withController:(UIViewController *)controller;
+- (void)hcPopViewController:(UIViewController *)controller  didTapMaskViewWithMaskView:(UIView *)maskView;
 @end
 
 @interface HCBasePopupViewController : UIViewController

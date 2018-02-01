@@ -165,7 +165,7 @@
 }
 
 #pragma mark - HCBasePopupViewControllerDelegate
-- (void)setupSubViewWithPopupView:(UIView *)popupView withController:(UIViewController *)controller{
+- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView{
     popupView.backgroundColor = CWIPColorFromHex(0xcccccc);
     popupView.alpha = 0.4;
     for (HCBottomPopupAction * action in self.actionArray) {

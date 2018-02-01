@@ -36,8 +36,8 @@
     [self.view addSubview:self.popupView];
     [self.maskView addGestureRecognizer:self.tapGesture];
     
-    if ([self.popupDelegate respondsToSelector:@selector(setupSubViewWithPopupView: withController:)]) {
-        [self.popupDelegate setupSubViewWithPopupView:self.popupView withController:self];
+    if ([self.popupDelegate respondsToSelector:@selector(hcPopViewController:setupSubViewWithPopupView:)]) {
+        [self.popupDelegate hcPopViewController:self setupSubViewWithPopupView:self.popupView];
     }
     
 }
@@ -110,8 +110,8 @@
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGesture {
-    if ([self.popupDelegate respondsToSelector:@selector(didTapMaskViewWithMaskView:withController:)]) {
-        [self.popupDelegate didTapMaskViewWithMaskView:self.maskView withController:self];
+    if ([self.popupDelegate respondsToSelector:@selector(hcPopViewController:didTapMaskViewWithMaskView:)]) {
+        [self.popupDelegate hcPopViewController:self didTapMaskViewWithMaskView:self.maskView];
     }
     if (self.tapMaskDissmiss) {
        [self dismiss];

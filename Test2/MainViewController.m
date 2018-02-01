@@ -76,9 +76,9 @@
 }
 
 #pragma mark - HCBasePopupViewControllerDelegate
-- (void)setupSubViewWithPopupView:(UIView *)popupView withController:(UIViewController *)controller{
+- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView{
     UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(popupView.frame)/2 -40, CGRectGetWidth(popupView.frame), 80)];
-    label.text = @"实现- (void)setupSubViewWithPopupView:(UIView *)popupView withController:(UIViewController *)controller这个协议方法来自定义你的弹出框内容";
+    label.text = @"实现- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView这个协议方法来自定义你的弹出框内容";
     label.numberOfLines = 0;
     label.font = [UIFont systemFontOfSize:14];
     label.textAlignment = NSTextAlignmentCenter;
