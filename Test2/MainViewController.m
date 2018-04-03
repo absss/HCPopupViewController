@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "HCBasePopupViewController.h"
 #import "HCBottomPopupViewController.h"
+#import "HCCenterPopAlertViewController.h"
 @interface MainViewController ()<HCBasePopupViewControllerDelegate>
 
 @end
@@ -39,7 +40,7 @@
     UIAlertController * ac = [UIAlertController alertControllerWithTitle:nil message:@"弹出框样式" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"中心弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 #warning 代码在这里.........
-        HCBasePopupViewController * pc =  [[HCBasePopupViewController alloc]init];
+        HCCenterPopAlertViewController * pc =  [[HCCenterPopAlertViewController alloc]init];
         pc.popupDelegate = self;
 //        pc.insets = UIEdgeInsetsMake(0, 15, 0, 0);//设置弹出框的偏移量
 //        pc.popupViewSize = CGSizeMake(200, 300);//设置弹出框的尺寸

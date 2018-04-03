@@ -17,6 +17,7 @@
 		9E71B9F11FE3ACD500E7A893 /* HCBasePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9F01FE3ACD500E7A893 /* HCBasePopupViewController.m */; };
 		9E71B9F81FE3C55600E7A893 /* HCBottomPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9F71FE3C55600E7A893 /* HCBottomPopupViewController.m */; };
 		9E71B9FB1FE3C85200E7A893 /* HCBottomPopupAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */; };
+		9E80FBA620737BB100D39795 /* HCCenterPopAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		9E71B9F71FE3C55600E7A893 /* HCBottomPopupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCBottomPopupViewController.m; sourceTree = "<group>"; };
 		9E71B9F91FE3C85200E7A893 /* HCBottomPopupAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCBottomPopupAction.h; sourceTree = "<group>"; };
 		9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCBottomPopupAction.m; sourceTree = "<group>"; };
+		9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCCenterPopAlertViewController.h; sourceTree = "<group>"; };
+		9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCCenterPopAlertViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 			children = (
 				9E71B9EF1FE3ACD500E7A893 /* HCBasePopupViewController.h */,
 				9E71B9F01FE3ACD500E7A893 /* HCBasePopupViewController.m */,
+				9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */,
+				9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */,
 				9E71B9F61FE3C55600E7A893 /* HCBottomPopupViewController.h */,
 				9E71B9F71FE3C55600E7A893 /* HCBottomPopupViewController.m */,
 				9E71B9F91FE3C85200E7A893 /* HCBottomPopupAction.h */,
@@ -286,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E80FBA620737BB100D39795 /* HCCenterPopAlertViewController.m in Sources */,
 				9E71B9C71FE3AA2800E7A893 /* main.m in Sources */,
 				9E71B9F81FE3C55600E7A893 /* HCBottomPopupViewController.m in Sources */,
 				9E71B9FB1FE3C85200E7A893 /* HCBottomPopupAction.m in Sources */,
