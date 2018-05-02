@@ -60,6 +60,8 @@
 		9E71B9F71FE3C55600E7A893 /* HCBottomPopupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCBottomPopupViewController.m; sourceTree = "<group>"; };
 		9E71B9F91FE3C85200E7A893 /* HCBottomPopupAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCBottomPopupAction.h; sourceTree = "<group>"; };
 		9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCBottomPopupAction.m; sourceTree = "<group>"; };
+		9E78B98320942F0E0077B663 /* HCBasePopupViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCBasePopupViewControllerDelegate.h; sourceTree = "<group>"; };
+		9E78B993209430790077B663 /* HCPopup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCPopup.h; sourceTree = "<group>"; };
 		9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCCenterPopAlertViewController.h; sourceTree = "<group>"; };
 		9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCCenterPopAlertViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,8 @@
 		9E71B9EE1FE3AC4F00E7A893 /* HCPopup */ = {
 			isa = PBXGroup;
 			children = (
+				9E78B993209430790077B663 /* HCPopup.h */,
+				9E78B98320942F0E0077B663 /* HCBasePopupViewControllerDelegate.h */,
 				9E71B9EF1FE3ACD500E7A893 /* HCBasePopupViewController.h */,
 				9E71B9F01FE3ACD500E7A893 /* HCBasePopupViewController.m */,
 				9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */,

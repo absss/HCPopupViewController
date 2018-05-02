@@ -8,26 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HCPopupCommon.h"
-
-@protocol HCBasePopupViewControllerDelegate<NSObject>
-@optional
-/**
-在这个协议方法中自定义你的弹出框中的内容,该方法在viewDidLoad中调用，
- 请在viewDidLoad方法调用之前指定协议对象
-
- @param popupView 弹框view
- */
-- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView;
-
-- (void)hcPopViewController:(UIViewController *)controller  didTapMaskViewWithMaskView:(UIView *)maskView;
-@end
+#import "HCBasePopupViewControllerDelegate.h"
 
 @interface HCBasePopupViewController : UIViewController
 
 /**
- 弹出框视图
+ 弹出框视
  */
-@property(nonatomic,strong)UIView * popupView;
+@property(nonatomic,strong,)UIView * _Nullable popupView;
 /**
  弹出框相对于中心点的偏移量，如果你不想让弹出框在中心点弹出，
  或者由于导航栏的缘故，弹出框距离中心点有偏移，请设置此属性，默认为0
@@ -42,7 +30,7 @@
 /**
  遮罩的颜色
  */
-@property(nonatomic,strong)UIColor * maskColor;
+@property(nonatomic,strong)UIColor * _Nullable maskColor;
 
 
 /**

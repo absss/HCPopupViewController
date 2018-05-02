@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HCBasePopupViewController.h"
 #import "HCBottomPopupAction.h"
+#import "HCBasePopupViewControllerDelegate.h"
+
 @interface HCBottomPopupViewController : HCBasePopupViewController
 - (void)addAction:(HCBottomPopupAction *)action;
 @end

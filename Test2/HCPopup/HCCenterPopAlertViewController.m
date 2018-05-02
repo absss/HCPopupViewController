@@ -93,9 +93,15 @@
     animatingType = HCBasePopupAnimatingTypeDismiss;
     return self;
 }
+#pragma mark - HCBasePopupViewControllerDelegate
+- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView{
+    popupView.backgroundColor = CWIPColorFromHex(0xcccccc);
+   
+}
 
 - (void)dealloc{
     NSLog(@"%s",__FUNCTION__);
 }
+
 
 @end

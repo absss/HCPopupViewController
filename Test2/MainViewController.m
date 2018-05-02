@@ -7,9 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "HCBasePopupViewController.h"
-#import "HCBottomPopupViewController.h"
-#import "HCCenterPopAlertViewController.h"
+
 @interface MainViewController ()<HCBasePopupViewControllerDelegate>
 
 @end

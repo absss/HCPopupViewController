@@ -57,6 +57,12 @@
     
 }
 
+- (void)setPopupViewCornerRadius:(CGFloat)popupViewCornerRadius{
+    _popupViewCornerRadius = popupViewCornerRadius;
+    _popupView.layer.cornerRadius = popupViewCornerRadius;
+
+}
+
 - (void)setMaskColor:(UIColor *)maskColor{
     _maskColor = maskColor;
     self.maskView.backgroundColor = maskColor;
@@ -67,6 +73,12 @@
     CGPoint center = self.popupView.center;
     center = CGPointMake(center.x+popupViewInsets.left-popupViewInsets.right, center.y+popupViewInsets.top-popupViewInsets.bottom);
     self.popupView.center = center;
+}
+
+- (void)setPopupViewCornerRadius:(CGFloat)popupViewCornerRadius{
+    _popupViewCornerRadius = popupViewCornerRadius;
+    _popupView.layer.cornerRadius = popupViewCornerRadius;
+    
 }
 
 #pragma mark - getter
