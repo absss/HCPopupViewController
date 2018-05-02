@@ -75,11 +75,6 @@
     self.popupView.center = center;
 }
 
-- (void)setPopupViewCornerRadius:(CGFloat)popupViewCornerRadius{
-    _popupViewCornerRadius = popupViewCornerRadius;
-    _popupView.layer.cornerRadius = popupViewCornerRadius;
-    
-}
 
 #pragma mark - getter
 - (UIView *)popupView {

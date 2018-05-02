@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "HCPopup.h"
 
 @interface MainViewController ()<HCBasePopupViewControllerDelegate>
 
