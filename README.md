@@ -2,7 +2,8 @@
 # HCPopupViewController
 有问题随时联系：微信：hehai_WeChat 邮箱：hehaichi123@163.com
 
-使用方法：
+<h2>使用方法<h2>
+```
 //实例化，并弹出它
 
 HCBasePopupViewController * pc =  [[HCBasePopupViewController alloc]init];
@@ -71,7 +72,9 @@ NSLog(@"点击遮罩");
         [pc addAction:action3];
         
         [pc addAction:action4];
+```
         
         
 效果图如下：
 ![img](https://github.com/absss/HCPopupViewController/blob/master/gif4.gif)
+
