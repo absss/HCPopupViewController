@@ -7,50 +7,69 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HCPopupCommon.h"
-#import "HCBasePopupViewControllerDelegate.h"
+typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
+    HCBasePopupAnimatingTypePresent = 1,
+    HCBasePopupAnimatingTypeDismiss = 2,
+};
 
 @interface HCBasePopupViewController : UIViewController
 
 /**
- 弹出框视
+ 弹出框视图
  */
-@property(nonatomic,strong,)UIView * _Nullable popupView;
+@property (nonatomic, strong) UIView * _Nullable popupView;
+
+/**转场动画类型*/
+@property (nonatomic, assign ,readonly) HCBasePopupAnimatingType animatingType;
 /**
- 弹出框相对于中心点的偏移量，如果你不想让弹出框在中心点弹出，
- 或者由于导航栏的缘故，弹出框距离中心点有偏移，请设置此属性，默认为0
+ 遮罩视图
  */
-@property(nonatomic,assign)UIEdgeInsets popupViewInsets;
+@property (nonatomic, strong) UIView * maskView;
 
 /**
- 弹出框大小
+ 设置弹出视图距离中心的偏移量，默认0
  */
-@property(nonatomic,assign)CGSize popupViewSize;
+@property (nonatomic, assign) UIEdgeInsets popupViewInsets;
 
 /**
- 遮罩的颜色
+ 弹出视图的尺寸
  */
-@property(nonatomic,strong)UIColor * _Nullable maskColor;
+@property (nonatomic, assign) CGSize popupViewSize;
 
+/**
+ 遮罩颜色
+ */
+@property (nonatomic, strong) UIColor * _Nullable maskColor;
 
 /**
  弹出动画时间
  */
-@property(nonatomic,assign)NSTimeInterval animatedTimeInterval;
-
+@property (nonatomic, assign) NSTimeInterval animatedTimeInterval;
 
 /**
- 点击遮罩dissmiss吗 默认为YES
+ 是否点击遮罩时dissmiss
  */
-@property(nonatomic,assign)BOOL tapMaskDissmiss;
+@property (nonatomic, assign) BOOL tapMaskDissmiss;
 
-@property(nonatomic,assign)CGFloat popupViewCornerRadius;
+/**
+ 弹出框的圆角
+ */
+@property (nonatomic, assign) CGFloat popupViewCornerRadius;
 
-@property(nonatomic,weak)id<HCBasePopupViewControllerDelegate>popupDelegate;
+/**
+ 点击遮罩的回调
+ */
+@property (nonatomic, copy) void (^maskViewTapHandler)(UIView * maskView);
 
+//dissmiss
 - (void)dismiss;
-
 - (void)dismissdWithCompletion:(void (^ __nullable)(void))completion;
 
-
+//To be override
+/*在这个方法里面设置属性*/
+- (void)subViewsWillReload;
+/*在这个方法里面添加子视图*/
+- (void)subViewsDidReload;
+/**在这个方法里面写转场动画*/
+- (void)viewController:(HCBasePopupViewController *)controller animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext;
 @end

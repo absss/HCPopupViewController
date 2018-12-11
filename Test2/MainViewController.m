@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "HCPopup.h"
 
-@interface MainViewController ()<HCBasePopupViewControllerDelegate>
+@interface MainViewController ()
 
 @end
 
@@ -40,13 +40,17 @@
     UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"中心弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 #warning 代码在这里.........
         HCCenterPopAlertViewController * pc =  [[HCCenterPopAlertViewController alloc]init];
-        pc.popupDelegate = self;
-//        pc.insets = UIEdgeInsetsMake(0, 15, 0, 0);//设置弹出框的偏移量
-//        pc.popupViewSize = CGSizeMake(200, 300);//设置弹出框的尺寸
         [self presentViewController:pc animated:YES completion:nil];
     }];
-    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"底部弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+    UIAlertAction * action3 = [UIAlertAction actionWithTitle:@"基础弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 #warning 代码在这里.........
+        HCBasePopupViewController * bc =  [[HCBasePopupViewController alloc]init];
+        [self presentViewController:bc animated:YES completion:nil];
+    }];
+    
+    
+    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"底部弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         HCBottomPopupViewController * pc =  [[HCBottomPopupViewController alloc]init];
         HCBottomPopupAction * action1 = [HCBottomPopupAction actionWithTitle:@"选择项1" withSelectedBlock:^{
                 NSLog(@"点击选项1");
@@ -70,6 +74,7 @@
     
     [ac addAction:action1];
     [ac addAction:action2];
+    [ac addAction:action3];
     [ac addAction:actionCancel];
     
     [self presentViewController:ac animated:YES completion:nil];

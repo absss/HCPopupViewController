@@ -53,10 +53,8 @@
 }
 @end
 
-@interface HCBottomPopupViewController ()<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,HCBasePopupViewControllerDelegate>
-{
-    HCBasePopupAnimatingType animatingType;
-}
+@interface HCBottomPopupViewController ()
+
 @property(nonatomic,strong)NSMutableArray <HCBottomPopupAction *>* actionArray;
 @property(nonatomic,assign)BOOL isContainCancel;
 @end
@@ -67,16 +65,21 @@
     self = [super init];
     if (self) {
         _actionArray = @[].mutableCopy;
-        self.popupViewCornerRadius = 0;
-        self.tapMaskDissmiss = YES;
-        self.popupDelegate = self;
     }
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)subViewsWillReload {
+    self.popupViewCornerRadius = 0;
     [self setupPopViewSize];
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)subViewsDidReload {
+    [self setupSubViews];
 }
 
 #pragma mark -  private method
@@ -116,8 +119,9 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
-    if (animatingType == HCBasePopupAnimatingTypePresent) {
-        UIView *popedView = [toVC.view viewWithTag:1000];
+    if (self.animatingType == HCBasePopupAnimatingTypePresent) {
+        NSAssert([toVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
+        UIView *popedView = ((HCBasePopupViewController *)toVC).popupView;
         [containerView addSubview:toVC.view];
         popedView.alpha = 0;
         CGRect frame = popedView.frame;
@@ -136,7 +140,9 @@
         }];
         
     } else {
-        UIView *popedView = [fromVC.view viewWithTag:1000];
+        
+        NSAssert([fromVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
+        UIView *popedView = ((HCBasePopupViewController *)fromVC).popupView;
         NSTimeInterval duration = 0.25;
         
         UIButton *closeBtn = [fromVC.view viewWithTag:1001];
@@ -152,22 +158,9 @@
     }
 }
 
-#pragma mark - UIViewControllerTransitioningDelegate
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    animatingType = HCBasePopupAnimatingTypePresent;
-    return self;
-}
-
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    animatingType = HCBasePopupAnimatingTypeDismiss;
-    
-    return self;
-}
-
-#pragma mark - HCBasePopupViewControllerDelegate
-- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView{
-    popupView.backgroundColor = CWIPColorFromHex(0xcccccc);
-    popupView.alpha = 0.4;
+- (void)setupSubViews {
+    UIView * popupView = self.popupView;
+    popupView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.6];
     for (HCBottomPopupAction * action in self.actionArray) {
         if (action.type == HCBottomPopupActionSelectItemTypeCancel) {//如果等于取消;
             //将action 移动到数组末尾
@@ -180,7 +173,7 @@
         HCBottomPopupAction * action = self.actionArray[i];
         HCBottomPopViewSelectedItemView * sv;
         if (action.type ==  HCBottomPopupActionSelectItemTypeCancel) {
-           sv = [[HCBottomPopViewSelectedItemView alloc]initWithFrame:CGRectMake(0, i*HCBottomPopupSelectItemHeight+20, CGRectGetWidth(popupView.frame), HCBottomPopupSelectItemHeight) withType:action.type];
+            sv = [[HCBottomPopViewSelectedItemView alloc]initWithFrame:CGRectMake(0, i*HCBottomPopupSelectItemHeight+20, CGRectGetWidth(popupView.frame), HCBottomPopupSelectItemHeight) withType:action.type];
             
             sv.clickBlock = ^{
                 spstrongify(self);
@@ -201,6 +194,4 @@
         sv.title = action.title;
     }
 }
-
-
 @end

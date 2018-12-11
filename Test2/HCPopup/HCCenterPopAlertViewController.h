@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "HCBasePopupViewController.h"
-#import "HCBasePopupViewControllerDelegate.h"
-@interface HCCenterPopAlertViewController : HCBasePopupViewController<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,HCBasePopupViewControllerDelegate>
+@interface HCCenterPopAlertViewController : HCBasePopupViewController
 
 @end

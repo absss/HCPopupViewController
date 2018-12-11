@@ -8,28 +8,18 @@
 
 #import "HCCenterPopAlertViewController.h"
 
-@interface HCCenterPopAlertViewController (){
-    HCBasePopupAnimatingType animatingType;
-}
-
-
+@interface HCCenterPopAlertViewController ()
 @end
 
 @implementation HCCenterPopAlertViewController
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.popupViewCornerRadius = 5;
-        self.tapMaskDissmiss = YES;
-        self.popupDelegate = self;
-    }
-    return self;
-}
+
 - (void)viewDidLoad {
-    [self setupPopViewSize];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)subViewsWillReload {
+    [self setupPopViewSize];
 }
 
 - (void)setupPopViewSize{
@@ -42,21 +32,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark - UIViewControllerAnimatedTransitioning
-- (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
-    return self.animatedTimeInterval>0?self.animatedTimeInterval:0.4;
-}
 
-- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+- (void)viewController:(HCBasePopupViewController *)controller animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
-    if (animatingType == HCBasePopupAnimatingTypePresent) {
-        UIView *popedView = [toVC.view viewWithTag:1000];
+    if (self.animatingType == HCBasePopupAnimatingTypePresent) {
+        NSAssert([toVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
+        UIView *popedView = ((HCBasePopupViewController *)toVC).popupView;
         [containerView addSubview:toVC.view];
         popedView.alpha = 0;
-        popedView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        popedView.transform = CGAffineTransformMakeScale(0.8, 0.8);
         
         
         NSTimeInterval duration = 0.5;
@@ -73,7 +60,8 @@
         }];
         
     } else {
-        UIView *popedView = [fromVC.view viewWithTag:1000];
+        NSAssert([fromVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
+        UIView *popedView = ((HCBasePopupViewController *)fromVC).popupView;
         NSTimeInterval duration = 0.25;
         [UIView animateWithDuration:duration animations:^{
             popedView.alpha = 0;
@@ -82,26 +70,5 @@
         }];
     }
 }
-
-#pragma mark - UIViewControllerTransitioningDelegate
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    animatingType = HCBasePopupAnimatingTypePresent;
-    return self;
-}
-
-- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    animatingType = HCBasePopupAnimatingTypeDismiss;
-    return self;
-}
-#pragma mark - HCBasePopupViewControllerDelegate
-- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView{
-    popupView.backgroundColor = CWIPColorFromHex(0xcccccc);
-   
-}
-
-- (void)dealloc{
-    NSLog(@"%s",__FUNCTION__);
-}
-
 
 @end

@@ -7,13 +7,11 @@
 //
 
 #import "HCBasePopupViewController.h"
-
 #define kHCBasePopupViewDefaultSize CGSizeMake(CGRectGetWidth(self.view.frame) * 0.75, CGRectGetHeight(self.view.frame) * 0.6)
-@interface HCBasePopupViewController ()<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning>{
-    HCBasePopupAnimatingType animatingType;
-}
-@property(nonatomic,strong)UIView * maskView;
 
+@interface HCBasePopupViewController ()<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning>{
+    HCBasePopupAnimatingType _animatingType;
+}
 @property (nonatomic,strong) UITapGestureRecognizer *tapGesture;
 @end
 
@@ -32,19 +30,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self subViewsWillReload];
     [self.view addSubview:self.maskView];
     [self.view addSubview:self.popupView];
     [self.maskView addGestureRecognizer:self.tapGesture];
-    
-    if ([self.popupDelegate respondsToSelector:@selector(hcPopViewController:setupSubViewWithPopupView:)]) {
-        [self.popupDelegate hcPopViewController:self setupSubViewWithPopupView:self.popupView];
-    }
-    
+    [self subViewsDidReload];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+#pragma mark - Public method
+- (void)subViewsWillReload {
+    //to be override
+}
+
+- (void)subViewsDidReload {
+    //to be override
+}
+
+- (void)dismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)dismissdWithCompletion:(void (^ __nullable)(void))completion {
+    [self dismissViewControllerAnimated:YES completion:completion];
+}
+
 
 #pragma mark - setter
 - (void)setPopupViewSize:(CGSize)popupViewSize{
@@ -111,29 +124,25 @@
     return _tapGesture;
 }
 
+- (HCBasePopupAnimatingType)animatingType {
+    return _animatingType;
+}
+
 #pragma mark - target selector
 - (void)closeAction {
     [self dismiss];
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGesture {
-    if ([self.popupDelegate respondsToSelector:@selector(hcPopViewController:didTapMaskViewWithMaskView:)]) {
-        [self.popupDelegate hcPopViewController:self didTapMaskViewWithMaskView:self.maskView];
+
+    if (self.maskViewTapHandler) {
+        self.maskViewTapHandler(tapGesture.view);
     }
+    
     if (self.tapMaskDissmiss) {
        [self dismiss];
     }
 }
-
-#pragma mark - dismiss
-- (void)dismiss {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)dismissdWithCompletion:(void (^ __nullable)(void))completion {
-    [self dismissViewControllerAnimated:YES completion:completion];
-}
-
 
 #pragma mark - UIViewControllerAnimatedTransitioning
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext{
@@ -141,24 +150,28 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
+    [self viewController:self animateTransition:transitionContext];
+}
+
+- (void)viewController:(HCBasePopupViewController *)controller animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+    
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
-    if (animatingType == HCBasePopupAnimatingTypePresent) {
-        UIView *popedView = [toVC.view viewWithTag:1000];
+    if (_animatingType == HCBasePopupAnimatingTypePresent) {
+        NSAssert([toVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
+        UIView *popedView = ((HCBasePopupViewController *)toVC).popupView;
         [containerView addSubview:toVC.view];
         popedView.alpha = 0;
-        popedView.transform = CGAffineTransformMakeScale(0.3, 0.3);
-        
+        popedView.transform = CGAffineTransformMakeScale(1.2, 1.2);
         
         NSTimeInterval duration = 0.5;
         [UIView animateWithDuration:duration / 2.0 animations:^{
             popedView.alpha = 1.0;
         }];
         
-        
-        CGFloat damping = 0.55;
+        CGFloat damping = 1.0;
         //回弹动画
         [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:damping initialSpringVelocity:1.0 / damping options:0 animations:^{
             popedView.transform = CGAffineTransformIdentity;
@@ -167,7 +180,8 @@
         }];
         
     } else {
-        UIView *popedView = [fromVC.view viewWithTag:1000];
+        NSAssert([fromVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
+        UIView *popedView = ((HCBasePopupViewController *)fromVC).popupView;
         NSTimeInterval duration = 0.25;
         [UIView animateWithDuration:duration animations:^{
             popedView.alpha = 0;
@@ -179,16 +193,16 @@
 
 #pragma mark - UIViewControllerTransitioningDelegate
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    animatingType = HCBasePopupAnimatingTypePresent;
+    _animatingType = HCBasePopupAnimatingTypePresent;
     return self;
 }
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    animatingType = HCBasePopupAnimatingTypeDismiss;
+    _animatingType = HCBasePopupAnimatingTypeDismiss;
     return self;
 }
 
 - (void)dealloc{
-    NSLog(@"%s",__FUNCTION__);
+    NSLog(@"%s",__func__);
 }
 @end

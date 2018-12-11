@@ -9,11 +9,6 @@
 #ifndef HCPopupCommon_h
 #define HCPopupCommon_h
 
-typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
-    HCBasePopupAnimatingTypePresent = 1,
-    HCBasePopupAnimatingTypeDismiss = 2,
-};
-
 #pragma mark - Function
 
 #define CWIPColorFromHex(rgbValue) [UIColor colorWithRed:((float)(((rgbValue) & 0xFF0000) >> 16))/255.0 green:((float)(((rgbValue) & 0xFF00) >> 8))/255.0 blue:((float)((rgbValue) & 0xFF))/255.0 alpha:1.0]
