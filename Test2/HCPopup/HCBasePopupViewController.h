@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 /**
  遮罩颜色
  */
-@property (nonatomic, strong) UIColor * _Nullable maskColor;
+@property (nonatomic, strong) UIColor * maskColor;
 
 /**
  弹出动画时间
@@ -67,9 +67,9 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 
 //To be override
 /*在这个方法里面设置属性*/
-- (void)subViewsWillReload;
+- (void)subViewsWillLoad;
 /*在这个方法里面添加子视图*/
-- (void)subViewsDidReload;
+- (void)subViewsDidLoad;
 /**在这个方法里面写转场动画*/
 - (void)viewController:(HCBasePopupViewController *)controller animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext;
 @end

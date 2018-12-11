@@ -30,11 +30,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self subViewsWillReload];
+    [self subViewsWillLoad];
     [self.view addSubview:self.maskView];
     [self.view addSubview:self.popupView];
     [self.maskView addGestureRecognizer:self.tapGesture];
-    [self subViewsDidReload];
+    [self subViewsDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,11 +42,11 @@
 }
 
 #pragma mark - Public method
-- (void)subViewsWillReload {
+- (void)subViewsWillLoad {
     //to be override
 }
 
-- (void)subViewsDidReload {
+- (void)subViewsDidLoad {
     //to be override
 }
 

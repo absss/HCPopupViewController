@@ -69,7 +69,7 @@
     return self;
 }
 
-- (void)subViewsWillReload {
+- (void)subViewsWillLoad {
     self.popupViewCornerRadius = 0;
     [self setupPopViewSize];
 }
@@ -78,7 +78,7 @@
     [super viewDidLoad];
 }
 
-- (void)subViewsDidReload {
+- (void)subViewsDidLoad {
     [self setupSubViews];
 }
 
