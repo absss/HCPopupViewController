@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E6EE64321C260C7009C5BC4 /* HCThreadSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */; };
 		9E71B9B91FE3AA2700E7A893 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */; };
 		9E71B9C11FE3AA2800E7A893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E71B9C01FE3AA2800E7A893 /* Assets.xcassets */; };
 		9E71B9C41FE3AA2800E7A893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E71B9C21FE3AA2800E7A893 /* LaunchScreen.storyboard */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E6EE64121C260C7009C5BC4 /* HCThreadSafeMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCThreadSafeMutableArray.h; sourceTree = "<group>"; };
+		9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCThreadSafeMutableArray.m; sourceTree = "<group>"; };
 		9E71B9B41FE3AA2700E7A893 /* Test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E71B9B71FE3AA2700E7A893 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 				9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */,
 				9E71B9E91FE3AA6900E7A893 /* MainViewController.h */,
 				9E71B9EA1FE3AA6900E7A893 /* MainViewController.m */,
+				9E6EE64121C260C7009C5BC4 /* HCThreadSafeMutableArray.h */,
+				9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */,
 				9E71B9EE1FE3AC4F00E7A893 /* HCPopup */,
 				9E71B9C01FE3AA2800E7A893 /* Assets.xcassets */,
 				9E71B9C21FE3AA2800E7A893 /* LaunchScreen.storyboard */,
@@ -293,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E6EE64321C260C7009C5BC4 /* HCThreadSafeMutableArray.m in Sources */,
 				9E80FBA620737BB100D39795 /* HCCenterPopAlertViewController.m in Sources */,
 				9E71B9C71FE3AA2800E7A893 /* main.m in Sources */,
 				9E71B9F81FE3C55600E7A893 /* HCBottomPopupViewController.m in Sources */,

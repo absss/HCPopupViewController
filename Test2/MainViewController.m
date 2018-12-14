@@ -8,8 +8,10 @@
 
 #import "MainViewController.h"
 #import "HCPopup.h"
+#import "HCThreadSafeMutableArray.h"
 
 @interface MainViewController ()
+@property (strong, nonatomic) NSMutableArray *dataSource;
 
 @end
 
@@ -18,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.dataSource = [[HCThreadSafeMutableArray alloc] init];
+    [self configData];
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:button];
@@ -28,7 +33,96 @@
     
     [button addTarget:self action:@selector(action) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    UIButton * startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:startBtn];
+    
+    startBtn.frame = CGRectMake(self.view.center.x - 30, CGRectGetMaxY(button.frame)+10, 60, 30);
+    [startBtn setTitle:@"开始" forState:UIControlStateNormal];
+    [startBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [startBtn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton * removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:removeBtn];
+    
+    removeBtn.frame = CGRectMake(self.view.center.x - 30, CGRectGetMaxY(startBtn.frame)+10, 60, 30);
+    [removeBtn setTitle:@"移除" forState:UIControlStateNormal];
+    [removeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [removeBtn addTarget:self action:@selector(remove) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self testTargetPerformance];
+    
+    
+    
+    
 }
+- (void)configData
+{
+    
+    for (int i = 0; i < 100; i++) {
+        [self.dataSource addObject:[NSString stringWithFormat:@"Obj - %i", i]];
+    }
+}
+
+
+- (void)start {
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    dispatch_async(globalQueue, ^{
+        for (int i = 0; i < self.dataSource.count; i++) {
+            [NSThread sleepForTimeInterval:0.5];
+            NSLog(@"%@", self.dataSource[i]);
+        }
+    });
+    
+}
+
+- (void) remove {
+      [self.dataSource removeAllObjects];
+    NSLog(@"移除所有");
+}
+
+- (void)testTargetPerformance{
+    NSTimeInterval begin, end, time1,time2;
+   
+    HCThreadSafeMutableArray *safeArr = [[HCThreadSafeMutableArray alloc] init];
+    NSMutableArray *normalArr = [[NSMutableArray alloc] init];
+    
+    
+    int times = 1000;
+    
+    //NSMutableArray
+    begin = CACurrentMediaTime();
+    for ( int i = 0; i < times; i ++) {
+        [normalArr addObject:[NSString stringWithFormat:@"%d",i]];
+        
+    }
+    for ( int i = 0; i < times; i ++) {
+        NSLog(@"%@",normalArr[i]);
+    }
+    end = CACurrentMediaTime();
+    time2 = end - begin;
+    
+    //HCThreadSafeMutableArray
+    begin = CACurrentMediaTime();
+    for ( int i = 0; i < times; i ++) {
+        [safeArr addObject:[NSString stringWithFormat:@"%d",i]];
+       
+    }
+    for ( int i = 0; i < times; i ++) {
+        NSLog(@"%@",safeArr[i]);
+    }
+    end = CACurrentMediaTime();
+    time1 = end - begin;
+    
+    printf("HCThreadSafeMutableArray:   %8.2f\n", time1 * 1000);
+    printf("NSMutableArray:   %8.2f\n", time2 * 1000);
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -80,17 +174,4 @@
     [self presentViewController:ac animated:YES completion:nil];
 }
 
-#pragma mark - HCBasePopupViewControllerDelegate
-- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView{
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(popupView.frame)/2 -40, CGRectGetWidth(popupView.frame), 80)];
-    label.text = @"实现- (void)hcPopViewController:(UIViewController *)controller setupSubViewWithPopupView:(UIView *)popupView这个协议方法来自定义你的弹出框内容";
-    label.numberOfLines = 0;
-    label.font = [UIFont systemFontOfSize:14];
-    label.textAlignment = NSTextAlignmentCenter;
-    [popupView addSubview:label];
-}
-
-- (void)didTapMaskViewWithMaskView:(UIView *)maskView withController:(UIViewController *)controller{
-    NSLog(@"点击遮罩");
-}
 @end
