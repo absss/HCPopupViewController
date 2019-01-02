@@ -65,10 +65,10 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 - (void)dismiss;
 - (void)dismissdWithCompletion:(void (^ __nullable)(void))completion;
 
-//To be override
-/*在这个方法里面设置属性*/
+// To be override
+/**在这个方法里面设置属性*/
 - (void)subViewsWillLoad;
-/*在这个方法里面添加子视图*/
+/**在这个方法里面添加子视图*/
 - (void)subViewsDidLoad;
 /**在这个方法里面写转场动画*/
 - (void)viewController:(HCBasePopupViewController *)controller animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext;

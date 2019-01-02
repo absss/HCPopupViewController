@@ -19,6 +19,7 @@
 		9E71B9FB1FE3C85200E7A893 /* HCBottomPopupAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */; };
 		9E7FEF1E21BFAB9A005AE4F5 /* HCBasePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7FEF1C21BFAB9A005AE4F5 /* HCBasePopupViewController.m */; };
 		9E80FBA620737BB100D39795 /* HCCenterPopAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */; };
+		9EE941E121DC64DF00FBEC0B /* FJKTagContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		9E7FEF1D21BFAB9A005AE4F5 /* HCBasePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCBasePopupViewController.h; sourceTree = "<group>"; };
 		9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCCenterPopAlertViewController.h; sourceTree = "<group>"; };
 		9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCCenterPopAlertViewController.m; sourceTree = "<group>"; };
+		9EE941DF21DC64DF00FBEC0B /* FJKTagContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJKTagContainView.h; sourceTree = "<group>"; };
+		9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJKTagContainView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +123,8 @@
 				9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */,
 				9E71B9E91FE3AA6900E7A893 /* MainViewController.h */,
 				9E71B9EA1FE3AA6900E7A893 /* MainViewController.m */,
-				9E6EE64121C260C7009C5BC4 /* HCThreadSafeMutableArray.h */,
-				9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */,
+				9EE941DE21DC64DF00FBEC0B /* FJKTagContainView */,
+				9EE941DC21DC648200FBEC0B /* HCThreadSafeMutableArray */,
 				9E71B9EE1FE3AC4F00E7A893 /* HCPopup */,
 				9E71B9C01FE3AA2800E7A893 /* Assets.xcassets */,
 				9E71B9C21FE3AA2800E7A893 /* LaunchScreen.storyboard */,
@@ -164,6 +167,24 @@
 				9E71B9F51FE3C01000E7A893 /* HCPopupCommon.h */,
 			);
 			path = HCPopup;
+			sourceTree = "<group>";
+		};
+		9EE941DC21DC648200FBEC0B /* HCThreadSafeMutableArray */ = {
+			isa = PBXGroup;
+			children = (
+				9E6EE64121C260C7009C5BC4 /* HCThreadSafeMutableArray.h */,
+				9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */,
+			);
+			path = HCThreadSafeMutableArray;
+			sourceTree = "<group>";
+		};
+		9EE941DE21DC64DF00FBEC0B /* FJKTagContainView */ = {
+			isa = PBXGroup;
+			children = (
+				9EE941DF21DC64DF00FBEC0B /* FJKTagContainView.h */,
+				9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */,
+			);
+			path = FJKTagContainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +327,7 @@
 				9E71B9EB1FE3AA6900E7A893 /* MainViewController.m in Sources */,
 				9E71B9B91FE3AA2700E7A893 /* AppDelegate.m in Sources */,
 				9E7FEF1E21BFAB9A005AE4F5 /* HCBasePopupViewController.m in Sources */,
+				9EE941E121DC64DF00FBEC0B /* FJKTagContainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

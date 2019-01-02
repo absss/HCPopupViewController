@@ -56,9 +56,8 @@
     [self testTargetPerformance];
     
     
-    
-    
 }
+
 - (void)configData
 {
     
@@ -70,7 +69,6 @@
 
 - (void)start {
     dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t mainQueue = dispatch_get_main_queue();
     dispatch_async(globalQueue, ^{
         for (int i = 0; i < self.dataSource.count; i++) {
             [NSThread sleepForTimeInterval:0.5];
