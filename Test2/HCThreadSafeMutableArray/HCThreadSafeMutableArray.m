@@ -10,13 +10,13 @@
 #import <pthread.h>
 
 
-@interface HCThreadSafeMutableArray()
-{
+@interface HCThreadSafeMutableArray() {
     pthread_mutex_t _lock;
     CFMutableArrayRef _array;
 }
 
 @end
+
 
 @implementation HCThreadSafeMutableArray
 
