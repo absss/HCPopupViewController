@@ -9,6 +9,8 @@
 #import "FJKTagContainView.h"
 
 #define FJKTagItemViewTagBaseCount 1000
+#define ColorFromHex(rgbValue) [UIColor colorWithRed:((float)(((rgbValue) & 0xFF0000) >> 16))/255.0 green:((float)(((rgbValue) & 0xFF00) >> 8))/255.0 blue:((float)((rgbValue) & 0xFF))/255.0 alpha:1.0]
+
 
 @interface FJKTagItemView ()
 @end
@@ -19,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        self.font = FONT_CAPTION_NORMAL;
+        self.font = [UIFont systemFontOfSize:14];
         self.userInteractionEnabled = YES;
         self.isSelected = NO;
         self.layer.cornerRadius = 1.5;
@@ -32,13 +34,13 @@
 - (void)setIsSelected:(BOOL)isSelected {
     _isSelected = isSelected;
     if (!isSelected) {
-        self.textColor = UIColorFromRGB(0x4C4C4C);
-        self.backgroundColor = UIColorFromRGB(0xF7F7F7);
+        self.textColor = ColorFromHex(0x4C4C4C);
+        self.backgroundColor = ColorFromHex(0xF7F7F7);
         self.layer.borderColor = [UIColor whiteColor].CGColor;
     } else {
-        self.textColor = UIColorFromRGB(0xf95e69);
+        self.textColor = ColorFromHex(0xf95e69);
         self.backgroundColor = [UIColor whiteColor];
-        self.layer.borderColor = UIColorFromRGB(0xf95e69).CGColor;
+        self.layer.borderColor = ColorFromHex(0xf95e69).CGColor;
     }
 }
 @end
@@ -79,7 +81,12 @@
     NSInteger count = [self.delegate numberOfTagItemInTagContainView:self];
     CGFloat maxWidth = CGRectGetWidth(self.frame);
     int row = 1;
-    [self removeAllSubviews];
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:[FJKTagItemView class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    
     for (int i = 0; i < count; i++) {
         FJKTagItemView * itemView = [self.delegate tagContainView:self tagItemViewForIndex:i];
         [self addSubview:itemView];
@@ -156,7 +163,7 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)sender {
     NSInteger index = sender.view.tag - FJKTagItemViewTagBaseCount;
-    FJKLog(@"点击了第%ld个标签",index);
+    NSLog(@"点击了第%ld个标签",index);
     if ([self.delegate respondsToSelector:@selector(tagContainView:didSelectedIndex:)]) {
         [self.delegate tagContainView:self didSelectedIndex:index];
     }
