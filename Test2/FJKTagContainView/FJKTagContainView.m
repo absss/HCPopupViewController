@@ -23,6 +23,7 @@
     if (self) {
         self.font = [UIFont systemFontOfSize:14];
         self.userInteractionEnabled = YES;
+        
         self.isSelected = NO;
         self.layer.cornerRadius = 1.5;
         self.layer.masksToBounds = YES;
