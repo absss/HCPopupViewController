@@ -10,8 +10,41 @@
 #import "HCPopup.h"
 #import "HCThreadSafeMutableArray.h"
 
+#define UIViewGetter(NAME) \
+- (UIView *)NAME {\
+if (!_##NAME) {\
+_##NAME = [UIView new];\
+}\
+return _##NAME;\
+}
+
+#define UIImageViewGetter(NAME,IMAGE) \
+- (UIImageView *)NAME {\
+if (!_##NAME) {\
+_##NAME = [UIImageView new];\
+_##NAME.contentMode = UIViewContentModeScaleAspectFill;\
+_imageView.image = IMAGE;\
+}\
+return _##NAME;\
+}
+
+#define UILabelGetter(NAME,TEXT_COLOR,FONT,TEXT) \
+- (UILabel *)NAME {\
+if (!_##NAME) {\
+_##NAME = [[UILabel alloc]init];\
+_##NAME.textColor = TEXT_COLOR;\
+_##NAME.font = FONT;\
+_##NAME.text = TEXT;\
+}\
+return _##NAME;\
+}
+
+
 @interface MainViewController ()
-@property (strong, nonatomic) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIView *someView;
 
 @end
 
@@ -52,11 +85,20 @@
     
     [removeBtn addTarget:self action:@selector(remove) forControlEvents:UIControlEventTouchUpInside];
     
+   
     
     [self testTargetPerformance];
     
-    
+    [self.view addSubview:self.titleLabel];
+    [self.view addSubview:self.imageView];
+    [self.view addSubview:self.someView];
 }
+
+UILabelGetter(titleLabel, [UIColor blueColor], [UIFont systemFontOfSize:14], @"texttexttexttexttexttexttexttexttext");
+UIImageViewGetter(imageView, nil);
+UIViewGetter(someView);
+
+
 
 - (void)configData
 {
