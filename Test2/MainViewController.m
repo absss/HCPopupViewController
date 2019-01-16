@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "HCPopup.h"
 #import "HCThreadSafeMutableArray.h"
+#import "FJKImageContainView.h"
 
 #define UIViewGetter(NAME) \
 - (UIView *)NAME {\
@@ -28,32 +29,34 @@ _imageView.image = IMAGE;\
 return _##NAME;\
 }
 
-#define UILabelGetter(NAME,TEXT_COLOR,FONT,TEXT) \
+#define UILabelGetter(NAME,TEXT_COLOR,FONT,TEXT,TEXT_ALIGN,NUMBER_OF_LINE) \
 - (UILabel *)NAME {\
 if (!_##NAME) {\
 _##NAME = [[UILabel alloc]init];\
 _##NAME.textColor = TEXT_COLOR;\
+_##NAME.textAlignment = TEXT_ALIGN;\
+_##NAME.numberOfLines = NUMBER_OF_LINE;\
 _##NAME.font = FONT;\
 _##NAME.text = TEXT;\
 }\
 return _##NAME;\
 }
 
-
-@interface MainViewController ()
+@interface MainViewController ()<FJKImageContainViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIView *someView;
-
+@property (nonatomic, strong) NSMutableArray *imageSources;
 @end
+
+
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
     self.dataSource = [[HCThreadSafeMutableArray alloc] init];
     [self configData];
     
@@ -85,16 +88,44 @@ return _##NAME;\
     
     [removeBtn addTarget:self action:@selector(remove) forControlEvents:UIControlEventTouchUpInside];
     
-   
+    self.imageSources = [NSMutableArray array];
+    [self.imageSources addObject:[UIImage imageNamed:@"someImage.jpg"]];
+    FJKImageContainView * containView = [[FJKImageContainView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(removeBtn.frame)+15, CGRectGetWidth(self.view.frame), 100)];
+    containView.delegate = self;
+    containView.isEdit = YES;
+    
+    
     
     [self testTargetPerformance];
     
     [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.imageView];
     [self.view addSubview:self.someView];
+    [self.view addSubview:containView];
+    
+    [containView relaodData];
+    
+    
 }
 
-UILabelGetter(titleLabel, [UIColor blueColor], [UIFont systemFontOfSize:14], @"texttexttexttexttexttexttexttexttext");
+
+- (NSInteger)numberOfImageItemViewInContainView:(FJKImageContainView *)tagContainView {
+    return self.imageSources.count;
+}
+
+- (FJKImageItemView *)imageContainView:(FJKImageContainView *)imageContainView imageItemViewForIndex:(NSInteger)index {
+    FJKImageItemView * itemView = [[FJKImageItemView alloc] init];
+    itemView.imageSource = [UIImage imageNamed:@"someImage.jpg"];
+    return itemView;
+}
+
+- (void)didSelectedAddImageItemViewWithImageContainView:(FJKImageContainView *)imageContainView {
+    [self.imageSources addObject:[UIImage imageNamed:@"someImage.jpg"]];
+    [imageContainView relaodData];
+}
+
+//UILabelGetter(titleLabel, [UIColor blueColor], [UIFont systemFontOfSize:14], @"texttexttexttexttexttexttexttexttext");
+UILabelGetter(titleLabel, [UIColor blueColor], [UIFont systemFontOfSize:14], @"123", NSTextAlignmentCenter, 1);
 UIImageViewGetter(imageView, nil);
 UIViewGetter(someView);
 

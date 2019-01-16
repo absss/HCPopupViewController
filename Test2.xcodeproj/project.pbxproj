@@ -20,6 +20,10 @@
 		9E7FEF1E21BFAB9A005AE4F5 /* HCBasePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7FEF1C21BFAB9A005AE4F5 /* HCBasePopupViewController.m */; };
 		9E80FBA620737BB100D39795 /* HCCenterPopAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */; };
 		9EE941E121DC64DF00FBEC0B /* FJKTagContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */; };
+		9EF6AE5C21DF39C500091E2D /* FJKImageContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF6AE5B21DF39C500091E2D /* FJKImageContainView.m */; };
+		9EF6AE5F21DF488200091E2D /* btn_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF6AE5D21DF488200091E2D /* btn_add@2x.png */; };
+		9EF6AE6021DF488200091E2D /* btn_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF6AE5E21DF488200091E2D /* btn_add@3x.png */; };
+		9EF6AE6221DF523800091E2D /* someImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EF6AE6121DF523800091E2D /* someImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,11 @@
 		9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCCenterPopAlertViewController.m; sourceTree = "<group>"; };
 		9EE941DF21DC64DF00FBEC0B /* FJKTagContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJKTagContainView.h; sourceTree = "<group>"; };
 		9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJKTagContainView.m; sourceTree = "<group>"; };
+		9EF6AE5A21DF39C500091E2D /* FJKImageContainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJKImageContainView.h; sourceTree = "<group>"; };
+		9EF6AE5B21DF39C500091E2D /* FJKImageContainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJKImageContainView.m; sourceTree = "<group>"; };
+		9EF6AE5D21DF488200091E2D /* btn_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add@2x.png"; sourceTree = "<group>"; };
+		9EF6AE5E21DF488200091E2D /* btn_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add@3x.png"; sourceTree = "<group>"; };
+		9EF6AE6121DF523800091E2D /* someImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = someImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +132,7 @@
 				9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */,
 				9E71B9E91FE3AA6900E7A893 /* MainViewController.h */,
 				9E71B9EA1FE3AA6900E7A893 /* MainViewController.m */,
+				9EF6AE5921DF399A00091E2D /* FJKImageContainView */,
 				9EE941DE21DC64DF00FBEC0B /* FJKTagContainView */,
 				9EE941DC21DC648200FBEC0B /* HCThreadSafeMutableArray */,
 				9E71B9EE1FE3AC4F00E7A893 /* HCPopup */,
@@ -185,6 +195,18 @@
 				9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */,
 			);
 			path = FJKTagContainView;
+			sourceTree = "<group>";
+		};
+		9EF6AE5921DF399A00091E2D /* FJKImageContainView */ = {
+			isa = PBXGroup;
+			children = (
+				9EF6AE6121DF523800091E2D /* someImage.jpg */,
+				9EF6AE5D21DF488200091E2D /* btn_add@2x.png */,
+				9EF6AE5E21DF488200091E2D /* btn_add@3x.png */,
+				9EF6AE5A21DF39C500091E2D /* FJKImageContainView.h */,
+				9EF6AE5B21DF39C500091E2D /* FJKImageContainView.m */,
+			);
+			path = FJKImageContainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,8 +315,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EF6AE6021DF488200091E2D /* btn_add@3x.png in Resources */,
 				9E71B9C41FE3AA2800E7A893 /* LaunchScreen.storyboard in Resources */,
+				9EF6AE6221DF523800091E2D /* someImage.jpg in Resources */,
 				9E71B9C11FE3AA2800E7A893 /* Assets.xcassets in Resources */,
+				9EF6AE5F21DF488200091E2D /* btn_add@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +353,7 @@
 				9E71B9B91FE3AA2700E7A893 /* AppDelegate.m in Sources */,
 				9E7FEF1E21BFAB9A005AE4F5 /* HCBasePopupViewController.m in Sources */,
 				9EE941E121DC64DF00FBEC0B /* FJKTagContainView.m in Sources */,
+				9EF6AE5C21DF39C500091E2D /* FJKImageContainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
