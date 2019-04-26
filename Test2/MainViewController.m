@@ -7,9 +7,10 @@
 //
 
 #import "MainViewController.h"
-#import "HCPopup.h"
-#import "HCThreadSafeMutableArray.h"
-#import "FJKImageContainView.h"
+#import "HCBasePopupViewController.h"
+#import "HCCenterPopAlertViewController.h"
+#import "HCBottomPopupViewController.h"
+
 
 #define UIViewGetter(NAME) \
 - (UIView *)NAME {\
@@ -42,12 +43,8 @@ _##NAME.text = TEXT;\
 return _##NAME;\
 }
 
-@interface MainViewController ()<FJKImageContainViewDelegate>
-@property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UIView *someView;
-@property (nonatomic, strong) NSMutableArray *imageSources;
+@interface MainViewController ()
+
 @end
 
 
@@ -57,8 +54,6 @@ return _##NAME;\
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.dataSource = [[HCThreadSafeMutableArray alloc] init];
-    [self configData];
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:button];
@@ -70,129 +65,8 @@ return _##NAME;\
     [button addTarget:self action:@selector(action) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UIButton * startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:startBtn];
-    
-    startBtn.frame = CGRectMake(self.view.center.x - 30, CGRectGetMaxY(button.frame)+10, 60, 30);
-    [startBtn setTitle:@"开始" forState:UIControlStateNormal];
-    [startBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    [startBtn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton * removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:removeBtn];
-    
-    removeBtn.frame = CGRectMake(self.view.center.x - 30, CGRectGetMaxY(startBtn.frame)+10, 60, 30);
-    [removeBtn setTitle:@"移除" forState:UIControlStateNormal];
-    [removeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    [removeBtn addTarget:self action:@selector(remove) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.imageSources = [NSMutableArray array];
-    [self.imageSources addObject:[UIImage imageNamed:@"someImage.jpg"]];
-    FJKImageContainView * containView = [[FJKImageContainView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(removeBtn.frame)+15, CGRectGetWidth(self.view.frame), 100)];
-    containView.delegate = self;
-    containView.isEdit = YES;
-    
-    
-    
-    [self testTargetPerformance];
-    
-    [self.view addSubview:self.titleLabel];
-    [self.view addSubview:self.imageView];
-    [self.view addSubview:self.someView];
-    [self.view addSubview:containView];
-    
-    [containView relaodData];
-    
     
 }
-
-
-- (NSInteger)numberOfImageItemViewInContainView:(FJKImageContainView *)tagContainView {
-    return self.imageSources.count;
-}
-
-- (FJKImageItemView *)imageContainView:(FJKImageContainView *)imageContainView imageItemViewForIndex:(NSInteger)index {
-    FJKImageItemView * itemView = [[FJKImageItemView alloc] init];
-    itemView.imageSource = [UIImage imageNamed:@"someImage.jpg"];
-    return itemView;
-}
-
-- (void)didSelectedAddImageItemViewWithImageContainView:(FJKImageContainView *)imageContainView {
-    [self.imageSources addObject:[UIImage imageNamed:@"someImage.jpg"]];
-    [imageContainView relaodData];
-}
-
-//UILabelGetter(titleLabel, [UIColor blueColor], [UIFont systemFontOfSize:14], @"texttexttexttexttexttexttexttexttext");
-UILabelGetter(titleLabel, [UIColor blueColor], [UIFont systemFontOfSize:14], @"123", NSTextAlignmentCenter, 1);
-UIImageViewGetter(imageView, nil);
-UIViewGetter(someView);
-
-
-
-- (void)configData
-{
-    
-    for (int i = 0; i < 100; i++) {
-        [self.dataSource addObject:[NSString stringWithFormat:@"Obj - %i", i]];
-    }
-}
-
-
-- (void)start {
-    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(globalQueue, ^{
-        for (int i = 0; i < self.dataSource.count; i++) {
-            [NSThread sleepForTimeInterval:0.5];
-            NSLog(@"%@", self.dataSource[i]);
-        }
-    });
-    
-}
-
-- (void) remove {
-      [self.dataSource removeAllObjects];
-    NSLog(@"移除所有");
-}
-
-- (void)testTargetPerformance{
-    NSTimeInterval begin, end, time1,time2;
-   
-    HCThreadSafeMutableArray *safeArr = [[HCThreadSafeMutableArray alloc] init];
-    NSMutableArray *normalArr = [[NSMutableArray alloc] init];
-    
-    
-    int times = 1000;
-    
-    //NSMutableArray
-    begin = CACurrentMediaTime();
-    for ( int i = 0; i < times; i ++) {
-        [normalArr addObject:[NSString stringWithFormat:@"%d",i]];
-        
-    }
-    for ( int i = 0; i < times; i ++) {
-        NSLog(@"%@",normalArr[i]);
-    }
-    end = CACurrentMediaTime();
-    time2 = end - begin;
-    
-    //HCThreadSafeMutableArray
-    begin = CACurrentMediaTime();
-    for ( int i = 0; i < times; i ++) {
-        [safeArr addObject:[NSString stringWithFormat:@"%d",i]];
-       
-    }
-    for ( int i = 0; i < times; i ++) {
-        NSLog(@"%@",safeArr[i]);
-    }
-    end = CACurrentMediaTime();
-    time1 = end - begin;
-    
-    printf("HCThreadSafeMutableArray:   %8.2f\n", time1 * 1000);
-    printf("NSMutableArray:   %8.2f\n", time2 * 1000);
-}
-
 
 
 - (void)didReceiveMemoryWarning {

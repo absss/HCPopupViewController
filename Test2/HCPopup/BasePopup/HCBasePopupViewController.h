@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 /**
  遮罩视图
  */
-@property (nonatomic, strong) UIView * maskView;
+@property (nonatomic, strong) UIView * _Nullable maskView;
 
 /**
  设置弹出视图距离中心的偏移量，默认0

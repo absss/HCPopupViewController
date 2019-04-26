@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E6EE64321C260C7009C5BC4 /* HCThreadSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */; };
 		9E71B9B91FE3AA2700E7A893 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */; };
 		9E71B9C11FE3AA2800E7A893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E71B9C01FE3AA2800E7A893 /* Assets.xcassets */; };
 		9E71B9C41FE3AA2800E7A893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E71B9C21FE3AA2800E7A893 /* LaunchScreen.storyboard */; };
@@ -19,11 +18,6 @@
 		9E71B9FB1FE3C85200E7A893 /* HCBottomPopupAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */; };
 		9E7FEF1E21BFAB9A005AE4F5 /* HCBasePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7FEF1C21BFAB9A005AE4F5 /* HCBasePopupViewController.m */; };
 		9E80FBA620737BB100D39795 /* HCCenterPopAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */; };
-		9EE941E121DC64DF00FBEC0B /* FJKTagContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */; };
-		9EF6AE5C21DF39C500091E2D /* FJKImageContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF6AE5B21DF39C500091E2D /* FJKImageContainView.m */; };
-		9EF6AE5F21DF488200091E2D /* btn_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF6AE5D21DF488200091E2D /* btn_add@2x.png */; };
-		9EF6AE6021DF488200091E2D /* btn_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EF6AE5E21DF488200091E2D /* btn_add@3x.png */; };
-		9EF6AE6221DF523800091E2D /* someImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EF6AE6121DF523800091E2D /* someImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9E6EE64121C260C7009C5BC4 /* HCThreadSafeMutableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCThreadSafeMutableArray.h; sourceTree = "<group>"; };
-		9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCThreadSafeMutableArray.m; sourceTree = "<group>"; };
 		9E71B9B41FE3AA2700E7A893 /* Test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E71B9B71FE3AA2700E7A893 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,18 +58,10 @@
 		9E71B9F71FE3C55600E7A893 /* HCBottomPopupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCBottomPopupViewController.m; sourceTree = "<group>"; };
 		9E71B9F91FE3C85200E7A893 /* HCBottomPopupAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCBottomPopupAction.h; sourceTree = "<group>"; };
 		9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCBottomPopupAction.m; sourceTree = "<group>"; };
-		9E78B993209430790077B663 /* HCPopup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCPopup.h; sourceTree = "<group>"; };
 		9E7FEF1C21BFAB9A005AE4F5 /* HCBasePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCBasePopupViewController.m; sourceTree = "<group>"; };
 		9E7FEF1D21BFAB9A005AE4F5 /* HCBasePopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCBasePopupViewController.h; sourceTree = "<group>"; };
 		9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCCenterPopAlertViewController.h; sourceTree = "<group>"; };
 		9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCCenterPopAlertViewController.m; sourceTree = "<group>"; };
-		9EE941DF21DC64DF00FBEC0B /* FJKTagContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJKTagContainView.h; sourceTree = "<group>"; };
-		9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJKTagContainView.m; sourceTree = "<group>"; };
-		9EF6AE5A21DF39C500091E2D /* FJKImageContainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJKImageContainView.h; sourceTree = "<group>"; };
-		9EF6AE5B21DF39C500091E2D /* FJKImageContainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJKImageContainView.m; sourceTree = "<group>"; };
-		9EF6AE5D21DF488200091E2D /* btn_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add@2x.png"; sourceTree = "<group>"; };
-		9EF6AE5E21DF488200091E2D /* btn_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_add@3x.png"; sourceTree = "<group>"; };
-		9EF6AE6121DF523800091E2D /* someImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = someImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +116,6 @@
 				9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */,
 				9E71B9E91FE3AA6900E7A893 /* MainViewController.h */,
 				9E71B9EA1FE3AA6900E7A893 /* MainViewController.m */,
-				9EF6AE5921DF399A00091E2D /* FJKImageContainView */,
-				9EE941DE21DC64DF00FBEC0B /* FJKTagContainView */,
-				9EE941DC21DC648200FBEC0B /* HCThreadSafeMutableArray */,
 				9E71B9EE1FE3AC4F00E7A893 /* HCPopup */,
 				9E71B9C01FE3AA2800E7A893 /* Assets.xcassets */,
 				9E71B9C21FE3AA2800E7A893 /* LaunchScreen.storyboard */,
@@ -165,48 +146,41 @@
 		9E71B9EE1FE3AC4F00E7A893 /* HCPopup */ = {
 			isa = PBXGroup;
 			children = (
-				9E78B993209430790077B663 /* HCPopup.h */,
-				9E7FEF1D21BFAB9A005AE4F5 /* HCBasePopupViewController.h */,
-				9E7FEF1C21BFAB9A005AE4F5 /* HCBasePopupViewController.m */,
-				9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */,
-				9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */,
-				9E71B9F61FE3C55600E7A893 /* HCBottomPopupViewController.h */,
-				9E71B9F71FE3C55600E7A893 /* HCBottomPopupViewController.m */,
-				9E71B9F91FE3C85200E7A893 /* HCBottomPopupAction.h */,
-				9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */,
+				9EF749FE22730340005B776B /* BasePopup */,
+				9EF749FF22730351005B776B /* CenterPopup */,
+				9EF74A0022730369005B776B /* BottomPopup */,
 				9E71B9F51FE3C01000E7A893 /* HCPopupCommon.h */,
 			);
 			path = HCPopup;
 			sourceTree = "<group>";
 		};
-		9EE941DC21DC648200FBEC0B /* HCThreadSafeMutableArray */ = {
+		9EF749FE22730340005B776B /* BasePopup */ = {
 			isa = PBXGroup;
 			children = (
-				9E6EE64121C260C7009C5BC4 /* HCThreadSafeMutableArray.h */,
-				9E6EE64221C260C7009C5BC4 /* HCThreadSafeMutableArray.m */,
+				9E7FEF1D21BFAB9A005AE4F5 /* HCBasePopupViewController.h */,
+				9E7FEF1C21BFAB9A005AE4F5 /* HCBasePopupViewController.m */,
 			);
-			path = HCThreadSafeMutableArray;
+			path = BasePopup;
 			sourceTree = "<group>";
 		};
-		9EE941DE21DC64DF00FBEC0B /* FJKTagContainView */ = {
+		9EF749FF22730351005B776B /* CenterPopup */ = {
 			isa = PBXGroup;
 			children = (
-				9EE941DF21DC64DF00FBEC0B /* FJKTagContainView.h */,
-				9EE941E021DC64DF00FBEC0B /* FJKTagContainView.m */,
+				9E80FBA420737BB100D39795 /* HCCenterPopAlertViewController.h */,
+				9E80FBA520737BB100D39795 /* HCCenterPopAlertViewController.m */,
 			);
-			path = FJKTagContainView;
+			path = CenterPopup;
 			sourceTree = "<group>";
 		};
-		9EF6AE5921DF399A00091E2D /* FJKImageContainView */ = {
+		9EF74A0022730369005B776B /* BottomPopup */ = {
 			isa = PBXGroup;
 			children = (
-				9EF6AE6121DF523800091E2D /* someImage.jpg */,
-				9EF6AE5D21DF488200091E2D /* btn_add@2x.png */,
-				9EF6AE5E21DF488200091E2D /* btn_add@3x.png */,
-				9EF6AE5A21DF39C500091E2D /* FJKImageContainView.h */,
-				9EF6AE5B21DF39C500091E2D /* FJKImageContainView.m */,
+				9E71B9F61FE3C55600E7A893 /* HCBottomPopupViewController.h */,
+				9E71B9F71FE3C55600E7A893 /* HCBottomPopupViewController.m */,
+				9E71B9F91FE3C85200E7A893 /* HCBottomPopupAction.h */,
+				9E71B9FA1FE3C85200E7A893 /* HCBottomPopupAction.m */,
 			);
-			path = FJKImageContainView;
+			path = BottomPopup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,11 +289,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EF6AE6021DF488200091E2D /* btn_add@3x.png in Resources */,
 				9E71B9C41FE3AA2800E7A893 /* LaunchScreen.storyboard in Resources */,
-				9EF6AE6221DF523800091E2D /* someImage.jpg in Resources */,
 				9E71B9C11FE3AA2800E7A893 /* Assets.xcassets in Resources */,
-				9EF6AE5F21DF488200091E2D /* btn_add@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +315,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E6EE64321C260C7009C5BC4 /* HCThreadSafeMutableArray.m in Sources */,
 				9E80FBA620737BB100D39795 /* HCCenterPopAlertViewController.m in Sources */,
 				9E71B9C71FE3AA2800E7A893 /* main.m in Sources */,
 				9E71B9F81FE3C55600E7A893 /* HCBottomPopupViewController.m in Sources */,
@@ -352,8 +322,6 @@
 				9E71B9EB1FE3AA6900E7A893 /* MainViewController.m in Sources */,
 				9E71B9B91FE3AA2700E7A893 /* AppDelegate.m in Sources */,
 				9E7FEF1E21BFAB9A005AE4F5 /* HCBasePopupViewController.m in Sources */,
-				9EE941E121DC64DF00FBEC0B /* FJKTagContainView.m in Sources */,
-				9EF6AE5C21DF39C500091E2D /* FJKImageContainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
