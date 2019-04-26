@@ -146,10 +146,10 @@
 		9E71B9EE1FE3AC4F00E7A893 /* HCPopup */ = {
 			isa = PBXGroup;
 			children = (
+				9E71B9F51FE3C01000E7A893 /* HCPopupCommon.h */,
 				9EF749FE22730340005B776B /* BasePopup */,
 				9EF749FF22730351005B776B /* CenterPopup */,
 				9EF74A0022730369005B776B /* BottomPopup */,
-				9E71B9F51FE3C01000E7A893 /* HCPopupCommon.h */,
 			);
 			path = HCPopup;
 			sourceTree = "<group>";
