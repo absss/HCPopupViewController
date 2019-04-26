@@ -65,7 +65,7 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 - (void)dismiss;
 - (void)dismissdWithCompletion:(void (^ __nullable)(void))completion;
 
-// To be override
+// 下列方法在派生类中重写
 /**在这个方法里面设置属性*/
 - (void)subViewsWillLoad;
 /**在这个方法里面添加子视图*/
