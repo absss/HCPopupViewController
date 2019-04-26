@@ -17,14 +17,14 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 /**
  弹出框视图
  */
-@property (nonatomic, strong) UIView * _Nullable popupView;
+@property (nonatomic, strong) UIView * _Nonnull popupView;
 
 /**转场动画类型*/
 @property (nonatomic, assign ,readonly) HCBasePopupAnimatingType animatingType;
 /**
  遮罩视图
  */
-@property (nonatomic, strong) UIView * _Nullable maskView;
+@property (nonatomic, strong) UIView * _Nonnull maskView;
 
 /**
  设置弹出视图距离中心的偏移量，默认0
@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 /**
  遮罩颜色
  */
-@property (nonatomic, strong) UIColor * maskColor;
+@property (nonatomic, strong) UIColor * _Nonnull maskColor;
 
 /**
  弹出动画时间
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 /**
  点击遮罩的回调
  */
-@property (nonatomic, copy) void (^maskViewTapHandler)(UIView * maskView);
+@property (nonatomic, copy) void (^ _Nonnull maskViewTapHandler)(UIView * _Nonnull maskView);
 
 //dissmiss
 - (void)dismiss;
@@ -71,5 +71,5 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 /**在这个方法里面添加子视图*/
 - (void)subViewsDidLoad;
 /**在这个方法里面写转场动画*/
-- (void)viewController:(HCBasePopupViewController *)controller animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext;
+- (void)viewController:(HCBasePopupViewController *_Nonnull)controller animateTransition:(id <UIViewControllerContextTransitioning>_Nonnull)transitionContext;
 @end
