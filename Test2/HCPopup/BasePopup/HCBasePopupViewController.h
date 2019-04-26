@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
 
 //dissmiss
 - (void)dismiss;
-- (void)dismissdWithCompletion:(void (^_Nonnull)(void))completion;
+- (void)dismissdWithCompletion:(void (^ __nullable)(void))completion;
 
 // 下列方法在派生类中重写
 /**在这个方法里面设置属性*/
