@@ -162,14 +162,10 @@ static CGFloat const HCBottomPopupSelectItemHeight = 50;
         NSAssert([fromVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
         UIView *popedView = ((HCBasePopupViewController *)fromVC).popupView;
         NSTimeInterval duration = 0.25;
-        
-        UIButton *closeBtn = [fromVC.view viewWithTag:1001];
-        
+            
         [UIView animateWithDuration:duration animations:^{
               popedView.transform = CGAffineTransformMakeTranslation(0,CGRectGetHeight(popedView.frame));
             popedView.alpha = 0;
-            closeBtn.alpha = 0;
-            //            popedView.transform = CGAffineTransformMakeScale(0.7, 0.7);
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:YES];
         }];
