@@ -9,22 +9,35 @@
 #import "HCBottomPopupViewController.h"
 #import "HCPopupCommon.h"
 
-#define HCBottomPopupSelectItemHeight 50
+static CGFloat const HCBottomPopupSelectItemHeight = 50;
+
+@interface HCBottomPopupAction()
+@end
+@implementation HCBottomPopupAction
+
++ (instancetype)actionWithTitle:(NSString *)title withSelectedBlock:(HCBottomPopupActionSelectItemBlock)selectBlock withType:(HCBottomPopupActionSelectItemType)type{
+    HCBottomPopupAction * action =  [HCBottomPopupAction new];
+    action.type = type;
+    action.selectBlock = selectBlock;
+    action.title = title;
+    return action;
+}
+@end
+
 
 @interface HCBottomPopViewSelectedItemView:UIButton
 @property(nonatomic,strong)UIView * bottomLine;
 @property(nonatomic,strong)NSString * title;
 @property(nonatomic,copy)dispatch_block_t clickBlock;
 @property(nonatomic,assign)HCBottomPopupActionSelectItemType type;
-
 @end
+
 @implementation HCBottomPopViewSelectedItemView
 - (instancetype)initWithFrame:(CGRect)frame withType:(HCBottomPopupActionSelectItemType)type{
     if(self = [super initWithFrame:frame]){
         _type = type;
         [self addSubview:self.bottomLine];
         self.titleLabel.font = [UIFont systemFontOfSize:14];
-        self.backgroundColor = [UIColor whiteColor];
         [self addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -76,10 +89,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 
 - (void)subViewsDidLoad {
     [self setupSubViews];
+    self.popupView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark -  private method
@@ -88,6 +103,9 @@
     if (self.isContainCancel) {
         height += 20;
     }
+    // 适配iPhone X
+    height = kDevice_iPhoneX_height(height);
+    
     self.popupViewSize = CGSizeMake(CGRectGetWidth(self.view.frame),height);
 }
 
@@ -160,7 +178,6 @@
 
 - (void)setupSubViews {
     UIView * popupView = self.popupView;
-    popupView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.6];
     for (HCBottomPopupAction * action in self.actionArray) {
         if (action.type == HCBottomPopupActionSelectItemTypeCancel) {//如果等于取消;
             //将action 移动到数组末尾
@@ -173,8 +190,10 @@
         HCBottomPopupAction * action = self.actionArray[i];
         HCBottomPopViewSelectedItemView * sv;
         if (action.type ==  HCBottomPopupActionSelectItemTypeCancel) {
-            sv = [[HCBottomPopViewSelectedItemView alloc]initWithFrame:CGRectMake(0, i*HCBottomPopupSelectItemHeight+20, CGRectGetWidth(popupView.frame), HCBottomPopupSelectItemHeight) withType:action.type];
-            
+            UIView *svContainView = [[UIView alloc]initWithFrame:CGRectMake(0, i*HCBottomPopupSelectItemHeight + 20, CGRectGetWidth(popupView.frame), kDevice_iPhoneX_height(HCBottomPopupSelectItemHeight))];
+            sv = [[HCBottomPopViewSelectedItemView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(popupView.frame), HCBottomPopupSelectItemHeight) withType:action.type];
+            sv.backgroundColor = [UIColor whiteColor];
+            sv.bottomLine.hidden = YES;
             sv.clickBlock = ^{
                 spstrongify(self);
                 if (action.selectBlock) {
@@ -182,15 +201,21 @@
                 }
                 [self dismiss];
             };
+            svContainView.backgroundColor = [UIColor whiteColor];
+            [svContainView addSubview:sv];
+            [popupView addSubview:svContainView];
         }else{
             sv = [[HCBottomPopViewSelectedItemView alloc]initWithFrame:CGRectMake(0, i*HCBottomPopupSelectItemHeight, CGRectGetWidth(popupView.frame), HCBottomPopupSelectItemHeight) withType:action.type];
+            sv.backgroundColor = [UIColor whiteColor];
+            sv.bottomLine.hidden = NO;
             sv.clickBlock = ^{
                 if (action.selectBlock) {
                     action.selectBlock();
                 }
             };
+            [popupView addSubview:sv];
         }
-        [popupView addSubview:sv];
+        
         sv.title = action.title;
     }
 }

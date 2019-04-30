@@ -9,7 +9,9 @@
 #ifndef HCPopupCommon_h
 #define HCPopupCommon_h
 
-#pragma mark - Function
+#define kDevice_iPhoneX ([[UIScreen mainScreen] bounds].size.height >= 812.0 )
+#define kDevice_iPhoneX_height(x) (kDevice_iPhoneX ? x + 34 : x)
+
 
 #pragma mark - Block Weak self
 #if __has_include(<ReactiveCocoa/ReactiveCocoa.h>)
