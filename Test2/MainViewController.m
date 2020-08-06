@@ -6,11 +6,13 @@
 //  Copyright © 2017年 hehaichi. All rights reserved.
 //
 
+
+
 #import "MainViewController.h"
 #import "HCBasePopupViewController.h"
 #import "HCCenterPopAlertViewController.h"
 #import "HCBottomPopupViewController.h"
-
+#import "HCSidePopupViewController.h"
 
 #define UIViewGetter(NAME) \
 - (UIView *)NAME {\
@@ -42,6 +44,19 @@ _##NAME.text = TEXT;\
 }\
 return _##NAME;\
 }
+//通过颜色来生成一个纯色图片
+UIImage * imageWithSize(CGSize size,UIColor *color){
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        return nil;
+    }
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height));
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
 
 @interface MainViewController ()
 
@@ -54,42 +69,47 @@ return _##NAME;\
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:button];
-    
-    button.frame = CGRectMake(self.view.center.x - 30, self.view.center.y -15, 60, 30);
-    [button setTitle:@"点击" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    [button addTarget:self action:@selector(action) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    
+    [self setupSubViews];
+    self.title = @"主页";
+    self.view.backgroundColor = UIColor.blackColor;
 }
 
+- (void)setupSubViews {
+    UIImage * img = imageWithSize(CGSizeMake(1, 1), UIColor.greenColor);
+    
+    NSArray *arr = @[@"基础弹出框",@"中心弹出框",@"底部弹出框",@"从左边弹出",@"从右边弹出"];
+    int i= 0;
+    for (NSString *title in arr) {
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.layer.cornerRadius = 3;
+        button.layer.masksToBounds = YES;
+        [button setBackgroundImage:img forState:UIControlStateNormal];
+        [self.view addSubview:button];
+        UIView * preView = [self.view viewWithTag:100+i-1];
+        if (preView) {
+              button.frame = CGRectMake(20, CGRectGetMaxY(preView.frame)+10, CGRectGetWidth(self.view.frame)-40, 44);
+        } else {
+            button.frame = CGRectMake(20,100, CGRectGetWidth(self.view.frame)-40, 44);
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+        }
+      
+        [button setTitle:title forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        button.tag = 100+i;
+        [button addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+        i++;
+    }
+   
 }
 
-- (void)action{
-    UIAlertController * ac = [UIAlertController alertControllerWithTitle:nil message:@"弹出框样式" preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"中心弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-#warning 代码在这里.........
-        HCCenterPopAlertViewController * pc =  [[HCCenterPopAlertViewController alloc]init];
-        [self presentViewController:pc animated:YES completion:nil];
-    }];
-    
-    UIAlertAction * action3 = [UIAlertAction actionWithTitle:@"基础弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-#warning 代码在这里.........
+- (void)action:(UIButton *)sender {
+    if (sender.tag  == 100) {
         HCBasePopupViewController * bc =  [[HCBasePopupViewController alloc]init];
-        [self presentViewController:bc animated:YES completion:nil];
-    }];
-    
-    
-    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"底部弹出框" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+          [self presentViewController:bc animated:YES completion:nil];
+    } else if (sender.tag == 101) {
+        HCCenterPopAlertViewController * pc =  [[HCCenterPopAlertViewController alloc]init];
+           [self presentViewController:pc animated:YES completion:nil];
+    } else if (sender.tag == 102) {
         HCBottomPopupViewController * pc =  [[HCBottomPopupViewController alloc]init];
         HCBottomPopupAction * action1 = [HCBottomPopupAction actionWithTitle:@"选择项1" withSelectedBlock:^{
                 NSLog(@"点击选项1");
@@ -108,15 +128,16 @@ return _##NAME;\
         
 
         [self presentViewController:pc animated:YES completion:nil];
-    }];
-    UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    
-    [ac addAction:action1];
-    [ac addAction:action2];
-    [ac addAction:action3];
-    [ac addAction:actionCancel];
-    
-    [self presentViewController:ac animated:YES completion:nil];
+    } else if (sender.tag == 103) {
+        HCSidePopupViewController * pc =  [[HCSidePopupViewController alloc]init];
+        pc.fromDirection = HCPopupSideFromDirectionLeft;
+        [self presentViewController:pc animated:YES completion:nil];
+    } else if (sender.tag == 104) {
+        HCSidePopupViewController * pc =  [[HCSidePopupViewController alloc]init];
+        pc.fromDirection = HCPopupSideFromDirectionRight;
+        [self presentViewController:pc animated:YES completion:nil];
+    }
 }
+
 
 @end

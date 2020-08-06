@@ -164,6 +164,7 @@
         UIView *popedView = ((HCBasePopupViewController *)toVC).popupView;
         [containerView addSubview:toVC.view];
         popedView.alpha = 0;
+        
         popedView.transform = CGAffineTransformMakeScale(1.2, 1.2);
         
         NSTimeInterval duration = 0.5;

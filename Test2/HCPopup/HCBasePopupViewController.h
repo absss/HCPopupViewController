@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 typedef NS_ENUM(NSInteger, HCBasePopupAnimatingType) {
     HCBasePopupAnimatingTypePresent = 1,
     HCBasePopupAnimatingTypeDismiss = 2,

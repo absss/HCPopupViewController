@@ -7,7 +7,8 @@
 //
 
 #import "HCBottomPopupViewController.h"
-#import "HCPopupCommon.h"
+#define kDevice_iPhoneX ([[UIScreen mainScreen] bounds].size.height >= 812.0)
+#define kDevice_iPhoneX_height(x) (kDevice_iPhoneX ? x + 34 : x)
 
 static CGFloat const HCBottomPopupSelectItemHeight = 50;
 
@@ -182,7 +183,7 @@ static CGFloat const HCBottomPopupSelectItemHeight = 50;
         }
     }
     for (int i = 0; i < self.actionArray.count; i++) {
-        spweakify(self);
+        __weak typeof(self) weakSelf = self;
         HCBottomPopupAction * action = self.actionArray[i];
         HCBottomPopViewSelectedItemView * sv;
         if (action.type ==  HCBottomPopupActionSelectItemTypeCancel) {
@@ -191,11 +192,11 @@ static CGFloat const HCBottomPopupSelectItemHeight = 50;
             sv.backgroundColor = [UIColor whiteColor];
             sv.bottomLine.hidden = YES;
             sv.clickBlock = ^{
-                spstrongify(self);
+                __strong typeof(weakSelf) strongSelf = weakSelf;
                 if (action.selectBlock) {
                     action.selectBlock();
                 }
-                [self dismiss];
+                [strongSelf dismiss];
             };
             svContainView.backgroundColor = [UIColor whiteColor];
             [svContainView addSubview:sv];
