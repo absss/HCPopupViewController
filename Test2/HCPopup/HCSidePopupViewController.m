@@ -63,7 +63,10 @@ static CGPoint origin;
 }
 
 - (void)setupPopViewSize{
-    CGFloat w = CGRectGetWidth(self.view.frame)-80;
+    CGFloat w = _sideWidth;
+    if (_sideWidth <= 0) {
+        w = CGRectGetWidth(self.view.frame)-80;
+    }
     CGFloat h = [UIScreen mainScreen].bounds.size.height;
     self.popupViewSize = CGSizeMake(w,h);
 }

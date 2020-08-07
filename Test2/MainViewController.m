@@ -13,6 +13,7 @@
 #import "HCCenterPopAlertViewController.h"
 #import "HCBottomPopupViewController.h"
 #import "HCSidePopupViewController.h"
+#import "HCDrawerViewController.h"
 
 #define UIViewGetter(NAME) \
 - (UIView *)NAME {\
@@ -77,7 +78,7 @@ UIImage * imageWithSize(CGSize size,UIColor *color){
 - (void)setupSubViews {
     UIImage * img = imageWithSize(CGSizeMake(1, 1), UIColor.greenColor);
     
-    NSArray *arr = @[@"基础弹出框",@"中心弹出框",@"底部弹出框",@"从左边弹出",@"从右边弹出"];
+    NSArray *arr = @[@"基础弹出框",@"中心弹出框",@"底部弹出框",@"从左边弹出",@"从右边弹出",@"抽屉"];
     int i= 0;
     for (NSString *title in arr) {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -136,8 +137,60 @@ UIImage * imageWithSize(CGSize size,UIColor *color){
         HCSidePopupViewController * pc =  [[HCSidePopupViewController alloc]init];
         pc.fromDirection = HCPopupSideFromDirectionRight;
         [self presentViewController:pc animated:YES completion:nil];
+    } else if (sender.tag == 105) {
+        HCDrawerViewController *vc = [HCDrawerViewController new];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        
+        UIViewController *leftSubVc = [UIViewController new];
+        leftSubVc.view.backgroundColor = UIColor.blueColor;
+        leftSubVc.title= @"左视图";
+        UILabel *leftLabel = [UILabel new];
+        leftLabel.text = @"你好，我是左抽屉,我有导航栏";
+        leftLabel.frame = CGRectMake(0, 120, 300, 50);
+        leftLabel.textColor = UIColor.whiteColor;
+        leftLabel.textAlignment = NSTextAlignmentCenter;
+        leftLabel.numberOfLines = 0;
+        [leftSubVc.view addSubview:leftLabel];
+        UINavigationController *leftSubNav = [[UINavigationController alloc]initWithRootViewController:leftSubVc];
+//        [leftSubNav.navigationBar setBackgroundImage:imageWithSize(CGSizeMake(1, 1), UIColor.greenColor) forBarMetrics:UIBarMetricsDefault];
+
+        
+        UIViewController *centerVc = [UIViewController new];
+        centerVc.title = @"中间视图";
+        UINavigationController *centerSubNav = [[UINavigationController alloc]initWithRootViewController:centerVc];
+        UILabel *centerLabel = [UILabel new];
+        centerLabel.text = @"你好，我是中间视图,左右滑动可以看到抽屉";
+        centerLabel.frame = CGRectMake(20, 120, CGRectGetWidth(self.view.frame)-40, 50);
+        centerLabel.textColor = UIColor.blackColor;
+        centerLabel.textAlignment = NSTextAlignmentCenter;
+        centerLabel.numberOfLines = 0;
+        [centerVc.view addSubview:centerLabel];
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(dissmiss)];
+        centerVc.navigationItem.rightBarButtonItem = rightItem;
+        
+        
+        UIViewController *rightSubVc = [UIViewController new];
+        rightSubVc.view.backgroundColor = UIColor.redColor;
+        rightSubVc.title = @"右视图";
+        UILabel *rightLabel = [UILabel new];
+        rightLabel.text = @"你好，我是右抽屉,我没有导航栏";
+        rightLabel.frame = CGRectMake(0, 50, 200, 50);
+        rightLabel.textColor = UIColor.whiteColor;
+        rightLabel.textAlignment = NSTextAlignmentCenter;
+        rightLabel.numberOfLines = 0;
+        [rightSubVc.view addSubview:rightLabel];
+        
+        
+        vc.leftConroller = leftSubNav;
+        vc.rightConroller = rightSubVc;
+        vc.centerConroller = centerSubNav;
+        vc.leftDrawerWidth = 300;
+        vc.rightDrawerWidth = 200;
+        [self presentViewController:vc animated:YES completion:nil];
     }
 }
 
-
+- (void)dissmiss {
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+}
 @end

@@ -14,6 +14,10 @@ typedef NS_ENUM(NSInteger, HCPopupSideFromDirection) {
     HCPopupSideFromDirectionRight = 1,
 };
 @interface HCSidePopupViewController : HCBasePopupViewController
+
+/// 方向
 @property (nonatomic, assign) HCPopupSideFromDirection fromDirection;
+/// 默认为 ScreenWidth - 80
+@property (nonatomic, assign) CGFloat sideWidth;
 @end
 

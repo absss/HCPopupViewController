@@ -11,6 +11,7 @@
 		9E09A36324DC06F700AEF255 /* HCBottomPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E09A35B24DC06F700AEF255 /* HCBottomPopupViewController.m */; };
 		9E09A36424DC06F700AEF255 /* HCSidePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E09A36024DC06F700AEF255 /* HCSidePopupViewController.m */; };
 		9E09A36524DC06F700AEF255 /* HCBasePopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E09A36124DC06F700AEF255 /* HCBasePopupViewController.m */; };
+		9E09A3BD24DD561700AEF255 /* HCDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E09A3BC24DD561700AEF255 /* HCDrawerViewController.m */; };
 		9E71B9B91FE3AA2700E7A893 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */; };
 		9E71B9C11FE3AA2800E7A893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E71B9C01FE3AA2800E7A893 /* Assets.xcassets */; };
 		9E71B9C41FE3AA2800E7A893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E71B9C21FE3AA2800E7A893 /* LaunchScreen.storyboard */; };
@@ -46,6 +47,8 @@
 		9E09A35F24DC06F700AEF255 /* HCBottomPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCBottomPopupViewController.h; sourceTree = "<group>"; };
 		9E09A36024DC06F700AEF255 /* HCSidePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSidePopupViewController.m; sourceTree = "<group>"; };
 		9E09A36124DC06F700AEF255 /* HCBasePopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCBasePopupViewController.m; sourceTree = "<group>"; };
+		9E09A3BB24DD561700AEF255 /* HCDrawerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCDrawerViewController.h; sourceTree = "<group>"; };
+		9E09A3BC24DD561700AEF255 /* HCDrawerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCDrawerViewController.m; sourceTree = "<group>"; };
 		9E71B9B41FE3AA2700E7A893 /* Test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E71B9B71FE3AA2700E7A893 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9E71B9B81FE3AA2700E7A893 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,14 +94,16 @@
 		9E09A35924DC06F700AEF255 /* HCPopup */ = {
 			isa = PBXGroup;
 			children = (
-				9E09A35A24DC06F700AEF255 /* HCCenterPopAlertViewController.m */,
-				9E09A35B24DC06F700AEF255 /* HCBottomPopupViewController.m */,
-				9E09A35C24DC06F700AEF255 /* HCSidePopupViewController.h */,
 				9E09A35D24DC06F700AEF255 /* HCBasePopupViewController.h */,
-				9E09A35E24DC06F700AEF255 /* HCCenterPopAlertViewController.h */,
-				9E09A35F24DC06F700AEF255 /* HCBottomPopupViewController.h */,
-				9E09A36024DC06F700AEF255 /* HCSidePopupViewController.m */,
 				9E09A36124DC06F700AEF255 /* HCBasePopupViewController.m */,
+				9E09A35F24DC06F700AEF255 /* HCBottomPopupViewController.h */,
+				9E09A35B24DC06F700AEF255 /* HCBottomPopupViewController.m */,
+				9E09A35E24DC06F700AEF255 /* HCCenterPopAlertViewController.h */,
+				9E09A35A24DC06F700AEF255 /* HCCenterPopAlertViewController.m */,
+				9E09A35C24DC06F700AEF255 /* HCSidePopupViewController.h */,
+				9E09A36024DC06F700AEF255 /* HCSidePopupViewController.m */,
+				9E09A3BB24DD561700AEF255 /* HCDrawerViewController.h */,
+				9E09A3BC24DD561700AEF255 /* HCDrawerViewController.m */,
 			);
 			path = HCPopup;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			files = (
 				9E71B9C71FE3AA2800E7A893 /* main.m in Sources */,
 				9E09A36324DC06F700AEF255 /* HCBottomPopupViewController.m in Sources */,
+				9E09A3BD24DD561700AEF255 /* HCDrawerViewController.m in Sources */,
 				9E71B9EB1FE3AA6900E7A893 /* MainViewController.m in Sources */,
 				9E09A36424DC06F700AEF255 /* HCSidePopupViewController.m in Sources */,
 				9E09A36224DC06F700AEF255 /* HCCenterPopAlertViewController.m in Sources */,
