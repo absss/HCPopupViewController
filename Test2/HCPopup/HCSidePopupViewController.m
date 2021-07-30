@@ -82,10 +82,11 @@ static CGPoint origin;
     UIView *containerView = [transitionContext containerView];
     
     if (self.animatingType == HCBasePopupAnimatingTypePresent) {
-        NSAssert([toVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
         UIView *popedView = ((HCBasePopupViewController *)toVC).popupView;
+        UIView *maskView = ((HCBasePopupViewController *)toVC).maskView;
+
         [containerView addSubview:toVC.view];
-        popedView.alpha = 0;
+        maskView.alpha = 0;
         CGRect frame = popedView.frame;
         CGFloat x;
         if (_fromDirection == HCPopupSideFromDirectionLeft) {
@@ -98,7 +99,7 @@ static CGPoint origin;
         
         NSTimeInterval duration = 0.5;
         [UIView animateWithDuration:duration / 2.0 animations:^{
-            popedView.alpha = 1.0;
+            maskView.alpha = 1.0;
         }];
         
         //回弹动画
@@ -116,8 +117,8 @@ static CGPoint origin;
         }];
         
     } else {
-        NSAssert([fromVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
         UIView *popedView = ((HCBasePopupViewController *)fromVC).popupView;
+        UIView *maskView = ((HCBasePopupViewController *)fromVC).maskView;
 
         CGFloat x;
         if (_fromDirection == HCPopupSideFromDirectionLeft) {
@@ -126,13 +127,14 @@ static CGPoint origin;
             x = CGRectGetWidth(popedView.frame);
         }
         NSTimeInterval duration = 0.25;
-            
-           [UIView animateWithDuration:duration animations:^{
-                popedView.transform = CGAffineTransformMakeTranslation(x, 0);
+        maskView.alpha = 1.0;
+       [UIView animateWithDuration:duration animations:^{
+           maskView.alpha = 0;
+            popedView.transform = CGAffineTransformMakeTranslation(x, 0);
 
-           } completion:^(BOOL finished) {
-               [transitionContext completeTransition:YES];
-           }];
+       } completion:^(BOOL finished) {
+           [transitionContext completeTransition:YES];
+       }];
     }
 }
 

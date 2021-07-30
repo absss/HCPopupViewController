@@ -160,31 +160,30 @@
     UIView *containerView = [transitionContext containerView];
     
     if (_animatingType == HCBasePopupAnimatingTypePresent) {
-        NSAssert([toVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
         UIView *popedView = ((HCBasePopupViewController *)toVC).popupView;
+        UIView *maskView = ((HCBasePopupViewController *)toVC).maskView;
+
         [containerView addSubview:toVC.view];
-        popedView.alpha = 0;
-        
+        maskView.alpha = 0;
         popedView.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        
         NSTimeInterval duration = 0.5;
-        [UIView animateWithDuration:duration / 2.0 animations:^{
-            popedView.alpha = 1.0;
-        }];
-        
         CGFloat damping = 1.0;
         //回弹动画
         [UIView animateWithDuration:duration delay:0.0 usingSpringWithDamping:damping initialSpringVelocity:1.0 / damping options:0 animations:^{
             popedView.transform = CGAffineTransformIdentity;
+            maskView.alpha = 1.0;
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         }];
         
     } else {
-        NSAssert([fromVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
         UIView *popedView = ((HCBasePopupViewController *)fromVC).popupView;
+        UIView *maskView = ((HCBasePopupViewController *)fromVC).maskView;
         NSTimeInterval duration = 0.25;
+        maskView.alpha = 1.0;
+        popedView.alpha = 1.0;
         [UIView animateWithDuration:duration animations:^{
+            maskView.alpha = 0;
             popedView.alpha = 0;
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:YES];

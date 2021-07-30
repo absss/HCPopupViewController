@@ -141,19 +141,17 @@ static CGFloat const HCBottomPopupSelectItemHeight = 50;
     if (self.animatingType == HCBasePopupAnimatingTypePresent) {
         NSAssert([toVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
         UIView *popedView = ((HCBasePopupViewController *)toVC).popupView;
+        UIView *maskView = ((HCBasePopupViewController *)toVC).maskView;
         [containerView addSubview:toVC.view];
-        popedView.alpha = 0;
+        maskView.alpha = 0;
         CGRect frame = popedView.frame;
         frame.origin = CGPointMake(0, CGRectGetHeight(self.view.frame));
         popedView.frame = frame;
         
         NSTimeInterval duration = 0.4;
         [UIView animateWithDuration:duration / 2.0 animations:^{
-            popedView.alpha = 1.0;
-        }];
-        
-        [UIView animateWithDuration:duration / 2.0 animations:^{
             popedView.transform = CGAffineTransformMakeTranslation(0, -CGRectGetHeight(popedView.frame));
+            maskView.alpha = 1.0;
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         }];
@@ -162,11 +160,13 @@ static CGFloat const HCBottomPopupSelectItemHeight = 50;
         
         NSAssert([fromVC isKindOfClass:[HCBasePopupViewController class]], @"请检查代码");
         UIView *popedView = ((HCBasePopupViewController *)fromVC).popupView;
+        UIView *maskView = ((HCBasePopupViewController *)fromVC).maskView;
+
         NSTimeInterval duration = 0.25;
-            
+        maskView.alpha = 1.0;
         [UIView animateWithDuration:duration animations:^{
               popedView.transform = CGAffineTransformMakeTranslation(0,CGRectGetHeight(popedView.frame));
-            popedView.alpha = 0;
+            maskView.alpha = 0;
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:YES];
         }];

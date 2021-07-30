@@ -96,10 +96,10 @@
 			children = (
 				9E09A35D24DC06F700AEF255 /* HCBasePopupViewController.h */,
 				9E09A36124DC06F700AEF255 /* HCBasePopupViewController.m */,
-				9E09A35F24DC06F700AEF255 /* HCBottomPopupViewController.h */,
-				9E09A35B24DC06F700AEF255 /* HCBottomPopupViewController.m */,
 				9E09A35E24DC06F700AEF255 /* HCCenterPopAlertViewController.h */,
 				9E09A35A24DC06F700AEF255 /* HCCenterPopAlertViewController.m */,
+				9E09A35F24DC06F700AEF255 /* HCBottomPopupViewController.h */,
+				9E09A35B24DC06F700AEF255 /* HCBottomPopupViewController.m */,
 				9E09A35C24DC06F700AEF255 /* HCSidePopupViewController.h */,
 				9E09A36024DC06F700AEF255 /* HCSidePopupViewController.m */,
 				9E09A3BB24DD561700AEF255 /* HCDrawerViewController.h */,
@@ -458,7 +458,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZP2SAR4PS;
+				DEVELOPMENT_TEAM = NHYHE776Y8;
 				INFOPLIST_FILE = Test2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -475,7 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZP2SAR4PS;
+				DEVELOPMENT_TEAM = NHYHE776Y8;
 				INFOPLIST_FILE = Test2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
